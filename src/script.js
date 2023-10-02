@@ -5,23 +5,34 @@ let rightBorder = document.querySelector('.right-border');
 let leftBorder = document.querySelector('.left-border');
 let topBorder = document.querySelector('.top-border');
 let bottomBorder = document.querySelector('.bottom-border');
+let step = 1;
 
 window.onload = function(){
 
     insertBorder();
     createPlayer();
-
-    let player = document.querySelector('.player-divs');
-
-    let playerPosition = player.getBoundingClientRect();
-
-    let playerX = playerPosition.left + window.scrollX;
-    let playerY = playerPosition.top + window.scrollY;
-
-    console.log('Posição em X - ' + playerX);
-    console.log('Posição em Y - ' + playerY);
-
+    
 }
+
+    setTimeout(() => {
+        
+        let player = getPlayer();
+        let playerX = getPlayerX(player);
+        let playerY = getPlayerY(player);
+
+        setInterval(() => {
+
+            playerX += step;
+            playerY += step;
+
+            //player.style.left = playerX + 'px';
+            //player.style.top = playerY + 'px';
+            
+        }, 100);
+        
+    }, 1000);
+
+
 
 //  Functions
 function insertBorder(){
@@ -96,3 +107,34 @@ function createPlayer(){
     field.append(player);
 
 }
+
+function stopGame(playerX, playerY){
+
+}
+
+function getRightBorder(){
+    let border = rightBorder.getBoundingClientRect();
+
+    return border;
+}
+
+function getPlayer(){
+    let player = document.querySelector('.player-divs');
+
+    return player;
+}
+
+function getPlayerX(player){
+    let playerPosition = player.getBoundingClientRect();
+    let playerX = playerPosition.left + window.scrollX;
+
+    return playerX;
+}
+
+function getPlayerY(player){
+    let playerPosition = player.getBoundingClientRect();
+    let playerY = playerPosition.top + window.scrollY;
+
+    return playerY;
+}
+
