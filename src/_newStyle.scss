@@ -1,38 +1,19 @@
-.bg{
+main{
     width: 100vw;
     height: 100vh;
+    background-color: black;
 }
 
-.square{
-    width: 80vw;
+.border{
+    width: 70vw;
     height: 80vh;
+    border: 2px solid green;
 }
 
-.top-border,
-.bottom-border{
-    height: 5vh;
-}
-
-.left-border,
-.right-border{
-    padding-top: 80px;
-    padding-bottom: 80px;
-    height: 70vh;
-}
-
-.field{
+.player{
     position: absolute;
-    width: 80vw !important;
-    height: 80vh !important;
-}
-
-.player-divs{
-    position: absolute;
-}
-
-.player-div{
-    width: 16px;
+    width: 15px;
     height: 16px;
-    background-color: #4e8810;
-    margin-left: 4px;
+    border-radius: 8px;
+    border: 1px solid;
 }

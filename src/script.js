@@ -1,129 +1,66 @@
-//  Variables
-let bg = document.querySelector('.bg');
-let field = document.querySelector('.field');
-let rightBorder = document.querySelector('.right-border');
-let leftBorder = document.querySelector('.left-border');
-let topBorder = document.querySelector('.top-border');
-let bottomBorder = document.querySelector('.bottom-border');
-let step = 1;
+let player = document.querySelector('.player');
+let pass = 5;
 
-window.onload = function(){
+/*
 
-    insertBorder();
-    createPlayer();
-    
-}
+this.addEventListener('keydown', (event) => {
 
-    setTimeout(() => {
-        
-        let player = getPlayer();
-        let playerX = getPlayerX(player);
+    if(event.key == 'ArrowUp'){
         let playerY = getPlayerY(player);
 
-        setInterval(() => {
+        playerY -= pass;
 
-            playerX += step;
-            playerY += step;
+        player.style.top = playerY;
+    }
 
-            //player.style.left = playerX + 'px';
-            //player.style.top = playerY + 'px';
-            
-        }, 100);
+    if(event.key == 'ArrowDown'){
+        let playerY = getPlayerY(player);
+
+        playerY += pass;
+
+        player.style.top = playerY;
+    }
+
+    if(event.key == 'ArrowLeft'){
+        let playerX = getPlayerX(player);
+
+        playerX -= pass;
+
+        player.style.left = playerX;
+    }
+
+    if(event.key == 'ArrowRight'){
+        let playerX = getPlayerX(player);
+
+        playerX += pass;
+
+        player.style.left = playerX;
+    }
+
+});
+
+*/
+
+setTimeout(() => {
+
+    setInterval(() => {
+
+        movePlayer(player);
         
-    }, 1000);
+    }, 100);
+    
+}, 3000);
 
 
+function movePlayer(player){
 
-//  Functions
-function insertBorder(){
-
-    for (let index = 1; index <= 10; index++) {
-
-        let img = document.createElement('img');
-
-        img.setAttribute('src','assets/img/bush.jpg');
-        img.setAttribute('width','32px');
-        img.setAttribute('height','32px');
-
-        topBorder.append(img);
-    }
-
-    for (let index = 1; index <= 4; index++) {
-
-        let img = document.createElement('img');
-
-        img.setAttribute('src','assets/img/bush.jpg');
-        img.setAttribute('width','32px');
-        img.setAttribute('height','32px');
-
-        leftBorder.append(img);
-        
-    }
-
-    for (let index = 1; index <= 4; index++) {
-
-        let img = document.createElement('img');
-
-        img.setAttribute('src','assets/img/bush.jpg');
-        img.setAttribute('width','32px');
-        img.setAttribute('height','32px');
-
-        rightBorder.append(img);
-        
-    }
-
-    for (let index = 1; index <=10; index++) {
-
-        let img = document.createElement('img');
-
-        img.setAttribute('src','assets/img/bush.jpg');
-        img.setAttribute('width','32px');
-        img.setAttribute('height','32px');
-
-        bottomBorder.append(img);
-    }
+    let playerX = getPlayerX(player);
+    playerX += pass;
+    player.style.left = playerX;
 
 }
 
-function createPlayer(){
-
-    let player = document.createElement('div');
-    let divs = document.createElement('div');
-
-    divs.classList.add('player-divs', 'd-flex');
-    player.classList.add('player');
-
-    for (let index = 1; index <= 5; index++) {
-
-        let div = document.createElement('div');
-        div.classList.add('player-div');
-
-        divs.append(div)
-
-        player.append(divs);
-        
-    }
-
-    field.append(player);
-
-}
-
-function stopGame(playerX, playerY){
-
-}
-
-function getRightBorder(){
-    let border = rightBorder.getBoundingClientRect();
-
-    return border;
-}
-
-function getPlayer(){
-    let player = document.querySelector('.player-divs');
-
-    return player;
-}
-
+//  Recupera a posição do jogador no eixo X
 function getPlayerX(player){
     let playerPosition = player.getBoundingClientRect();
     let playerX = playerPosition.left + window.scrollX;
@@ -131,10 +68,10 @@ function getPlayerX(player){
     return playerX;
 }
 
+//  Recupera a posição do jogador no eixo Y
 function getPlayerY(player){
     let playerPosition = player.getBoundingClientRect();
     let playerY = playerPosition.top + window.scrollY;
 
     return playerY;
 }
-
