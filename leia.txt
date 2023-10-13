@@ -1,0 +1,4 @@
+- É preciso definir um limite em X
+
+* Sendo que a distancia entre o centro e a extremidade do elemento 'border' é definido por: "border.clientWidth/2".;
+* É necessário verificar se o player andou a mesma distancia, usando
